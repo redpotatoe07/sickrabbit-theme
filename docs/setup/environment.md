@@ -16,7 +16,10 @@ The repo ships a pre-commit hook at `.githooks/pre-commit` that refuses direct c
 
 ```sh
 git config core.hooksPath .githooks
+chmod +x .githooks/pre-commit
 ```
+
+The `chmod +x` is needed on Windows clients with `core.fileMode=false` (common default) and anywhere else the executable bit may not have survived checkout. Without it, git silently skips the hook and direct commits to `main` go through.
 
 Verify: `git checkout main && git commit --allow-empty -m "test"` should fail with a clear error message. Then `git checkout -` to return to wherever you were. See `docs/setup/branching.md` for the full branch-discipline context.
 
@@ -29,6 +32,10 @@ shopify theme dev --store=sick-rabbit-store.myshopify.com
 The first run opens a browser for login and stores credentials in the CLI's config directory (`~/.config/shopify/` on macOS/Linux, `%APPDATA%\shopify\` on Windows). After that the CLI re-auths silently.
 
 To switch accounts: `shopify auth logout` then re-run `shopify theme dev`.
+
+## Claude Code local permissions (per-machine)
+
+`.claude/settings.local.json` holds per-machine bash permissions for Claude Code (which commands it can run without prompting). It's gitignored — every clone starts fresh. If Claude Code prompts you for permission on commands you expect to allow (e.g. `where python`, `uv --version`, etc.), approve them once and they'll be saved locally. Shared team-wide conventions live in `.claude/settings.json` (which IS committed); local overrides live in the `.local.json` file which isn't.
 
 ## Greptile MCP
 

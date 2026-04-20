@@ -57,11 +57,17 @@ Nothing to run locally for deploy.
 
 ## Upstream merges
 
+Upstream Dawn updates go through the same branch-and-PR flow as any other change — **never push the merge directly to `main`**. Dated branch name keeps history readable when multiple merges stack up.
+
 ```sh
 git fetch upstream
+git checkout -b chore/upstream-merge-$(date +%Y-%m-%d)
 git merge upstream/main
-# resolve conflicts
+# resolve conflicts in anything we've restyled
 shopify theme check
 shopify theme dev --store=sick-rabbit-store.myshopify.com   # smoke test
-git push origin main
+git push -u origin chore/upstream-merge-$(date +%Y-%m-%d)
+# Then open a PR to merge into main via pr-commit skill or gh pr create
 ```
+
+The PR is reviewed (Greptile) and merged like any other. Merging ships the updated Dawn baseline to the live theme — the same deploy path as feature work.

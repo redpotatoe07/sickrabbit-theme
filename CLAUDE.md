@@ -65,8 +65,8 @@ A forked-and-restyled Shopify Dawn theme for the Sick Rabbit apparel brand. Depl
 ## Project Info
 - Stack: Shopify Dawn theme (Liquid + OS 2.0 JSON templates + CSS + vanilla JS)
 - Local dev: `shopify theme dev --store=sick-rabbit-store.myshopify.com` → `127.0.0.1:9292`
-- Current branch: main
-- Main branch: main
+- Current branch: always check with `git branch --show-current` — never work directly on `main`
+- Main branch: `main` (live-deploys on merge)
 - Store: `sick-rabbit-store.myshopify.com`
 - Live domain (Phase 5): `sickrabbit.com`
 - Key docs: `docs/architecture.md`, `docs/components.md`, `docs/design/system.md`, `docs/decisions.md`, `planning/roadmap.md`
