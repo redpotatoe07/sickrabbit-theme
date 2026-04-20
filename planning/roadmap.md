@@ -16,14 +16,23 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 
 ## In Progress
 
-### Phase 3 — Restyle sections (iterative, ~4–6 sessions)
-Section-by-section restyle consuming the Phase 2 token layer. Starting with the header — sets the type/colour/spacing precedent the rest of the phase inherits.
-- [ ] **TSK-005**: Restyle header (logo, nav, cart icon, announcement bar) ← starting here
-- [ ] **TSK-006**: Restyle homepage (hero, featured collections, content modules)
-- [ ] **TSK-007**: Restyle collection page (grid, filters, sort)
-- [ ] **TSK-008**: Restyle product page / PDP (gallery, variants, add-to-cart, description)
+### Phase 3 — Restyle sections
+Restyle grouped into three PRs so shared patterns (nav type, product-card, overlay chrome) land together and don't need to be rewritten section-by-section.
+
+**PR 1 — Chrome** (`restyle/chrome`) ← starting here
+Persistent/overlay UI. Establishes the type ramp, link treatment, and icon set that everything else inherits.
+- [ ] **TSK-005**: Restyle header (logo, nav, cart icon, announcement bar)
 - [ ] **TSK-009**: Restyle cart drawer (quantity, line items, checkout button)
 - [ ] **TSK-010**: Restyle footer (links, newsletter, socials)
+
+**PR 2 — Homepage** (`restyle/homepage`)
+Standalone marketing composition — hero + featured collections + content modules.
+- [ ] **TSK-006**: Restyle homepage
+
+**PR 3 — Shopping flow** (`restyle/shopping`)
+Collection + PDP share the `product-card` snippet and variant/price patterns — done together so the card is written once.
+- [ ] **TSK-007**: Restyle collection page (grid, filters, sort)
+- [ ] **TSK-008**: Restyle product page / PDP (gallery, variants, add-to-cart, description)
 
 ## Next
 
