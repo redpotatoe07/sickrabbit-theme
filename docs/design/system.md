@@ -155,15 +155,18 @@ Used sparingly, for interface elements that want an analogue / physical-device f
 
 Defined in `assets/chrome-restyle.css`. Decision rationale in `docs/decisions.md` (2026-04-20).
 
-| Variant | Selector | Typography | Fill | Shadow |
-|---|---|---|---|---|
-| Primary | `.button` / `.button--primary` | `--font-display-special-family` (UnifrakturMaguntia), `--text-body-lg`, `0.06em` tracking | `--color-burnt-rose` on `--color-sand-dune` label | `--shadow-bevel-raised` → `-hover` → `-pressed` |
-| Secondary | `.button--secondary` | Inherits parent | Transparent, 1px `--color-foreground` border; hover fills burnt-rose | None (flat) |
-| Tertiary | `.button--tertiary` | Inherits parent | Transparent | None |
+Dawn paints `.button` fills via a `::after` pseudo-element (box-shadow layered on top of the button) — so Sick Rabbit's bevel is applied to `::after`, extending Dawn's shadow list rather than fighting it. This preserves Dawn's scheme-bound fill/border logic while adding the analogue-toggle depth.
 
-- Primary CTAs (checkout, add-to-cart, hero CTA) use the bevel trio for an analogue-toggle feel; transition is `--transition-fast`.
+| Variant | Selector | Typography | Fill | Shadow on `::after` |
+|---|---|---|---|---|
+| Primary | `.button` / `.button--primary` | `--font-display-special-family` (UnifrakturMaguntia), `--text-body-lg`, `0.06em` tracking | Scheme `--color-button` (burnt rose in scheme-1) | `--shadow-bevel-raised` → `-hover` → `-pressed` |
+| Secondary | `.button--secondary` | Inherits parent | Scheme `--color-secondary-button` with visible border ring | Same bevel trio as primary |
+| Tertiary | `.button--tertiary` | Inherits parent | Transparent | None (text-link role) |
+
+- Every CTA gets the bevel — the physicality is part of the brand identity, not a primary-only accent. Secondary reads as "outlined-but-physical", not "flat".
 - `:active` translates the button 1px down to reinforce the press.
-- `[disabled]` drops opacity to 0.5 and removes the shadow.
+- `[disabled]` drops opacity to 0.5.
+- Tertiary is intentionally flat — it's a text link, not a control.
 
 ## Inputs
 

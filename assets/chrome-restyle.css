@@ -100,63 +100,79 @@
 }
 
 /* ======================================================================
- * Button system — primary/secondary scheme for CTAs
+ * Button system — analogue bevel on every CTA
  *
- * Primary uses the display-special face (UnifrakturMaguntia) at
- * display-body size, burnt-rose fill, with the analogue bevel so the
- * button reads as a physical toggle. Log in docs/design/system.md and
- * docs/decisions.md.
+ * Dawn paints the visible button fill via a ::after pseudo-element
+ * (box-shadow layered on top of .button) so a direct background-color
+ * override on .button is invisible. Instead, we extend Dawn's ::after
+ * box-shadow list with the --shadow-bevel-* tokens, keeping Dawn's
+ * scheme-bound fill intact while adding the raised/hover/pressed
+ * physicality. Primary and secondary both get the bevel so an outlined
+ * secondary (e.g. PDP "Add to cart" when dynamic checkout is on) still
+ * reads as a physical toggle, not a flat web button. Tertiary stays
+ * flat — it's a text link, not a control. Log in docs/design/system.md
+ * and docs/decisions.md.
  * ==================================================================== */
 
 .button,
-.button--primary {
+.shopify-challenge__button,
+.customer button {
   font-family: var(--font-display-special-family);
   font-size: var(--text-body-lg);
   font-weight: var(--weight-regular);
   letter-spacing: 0.06em;
   text-transform: none;
-  background-color: var(--color-burnt-rose);
-  color: var(--color-sand-dune);
-  border: none;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-bevel-raised);
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  transition: transform var(--transition-fast);
 }
 
-.button:hover:not([disabled]),
-.button--primary:hover:not([disabled]) {
-  box-shadow: var(--shadow-bevel-hover);
+.button:not([disabled])::after,
+.shopify-challenge__button:not([disabled])::after,
+.customer button:not([disabled])::after {
+  box-shadow:
+    0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-button-text), var(--border-opacity)),
+    0 0 0 var(--buttons-border-width)
+      rgba(var(--color-button), var(--alpha-button-background)),
+    var(--shadow-bevel-raised);
 }
 
-.button:active:not([disabled]),
-.button--primary:active:not([disabled]) {
-  box-shadow: var(--shadow-bevel-pressed);
+.button:not([disabled]):hover::after,
+.shopify-challenge__button:not([disabled]):hover::after,
+.customer button:not([disabled]):hover::after {
+  --border-offset: 1.3px;
+  box-shadow:
+    0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-button-text), var(--border-opacity)),
+    0 0 0 calc(var(--buttons-border-width) + 1px)
+      rgba(var(--color-button), var(--alpha-button-background)),
+    var(--shadow-bevel-hover);
+}
+
+.button:not([disabled]):active::after,
+.shopify-challenge__button:not([disabled]):active::after,
+.customer button:not([disabled]):active::after {
+  box-shadow:
+    0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-button-text), var(--border-opacity)),
+    0 0 0 var(--buttons-border-width)
+      rgba(var(--color-button), var(--alpha-button-background)),
+    var(--shadow-bevel-pressed);
+}
+
+.button:not([disabled]):active,
+.shopify-challenge__button:not([disabled]):active,
+.customer button:not([disabled]):active {
   transform: translateY(1px);
 }
 
 .button[disabled],
-.button--primary[disabled] {
+.customer button[disabled] {
   opacity: 0.5;
-  box-shadow: none;
 }
 
-.button--secondary {
-  background-color: transparent;
-  color: rgb(var(--color-foreground));
-  border: 1px solid rgb(var(--color-foreground));
+/* Tertiary stays flat — text-link role, no physical affordance. */
+.button--tertiary::after {
   box-shadow: none;
-}
-
-.button--secondary:hover:not([disabled]) {
-  background-color: var(--color-burnt-rose);
-  color: var(--color-sand-dune);
-  border-color: var(--color-burnt-rose);
-}
-
-.button--tertiary {
-  background: transparent;
-  box-shadow: none;
-  color: rgb(var(--color-foreground));
 }
 
 /* ======================================================================
