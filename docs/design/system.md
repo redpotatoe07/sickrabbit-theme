@@ -1,8 +1,8 @@
 # Design System
 
-Source tokens extracted from the old Astro repo at `C:\Users\redpo\repos\sickrabbit-website\src\styles\variables.css`. These are the target values — Phase 2 of the build plan applies them to Dawn's CSS custom properties and colour schemes.
+Source tokens extracted from the old Astro repo at `C:\Users\redpo\repos\sickrabbit-website\src\styles\variables.css`. These values are wired into `assets/base.css` and consumed by section/snippet CSS (including `assets/chrome-restyle.css` from Phase 3).
 
-> Status: **placeholder — not yet wired into the theme.** See `planning/roadmap.md` → Phase 2.
+> Status: **wired into `assets/base.css`** as of Phase 2 (2026-04-20). Phase 3 restyles consume these tokens via `assets/chrome-restyle.css` and future `section-*.css` overrides.
 
 ## Colour
 

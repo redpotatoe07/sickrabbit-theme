@@ -1,0 +1,100 @@
+/*
+ * Chrome restyle — header, announcement bar, cart drawer, footer.
+ *
+ * Loaded after Dawn's component CSS in layout/theme.liquid so tokenised
+ * overrides win cascade without !important. Keep edits additive — do not
+ * modify Dawn's component-*.css or section-footer.css files so
+ * `git merge upstream/main` stays tractable.
+ *
+ * Tokens are defined in assets/base.css and documented in
+ * docs/design/system.md. Colour-scheme tokens (rgb var triples) are used
+ * where admin colour-scheme editing should continue to work; brand-locked
+ * hex tokens (burnt-rose, graphite, sand-dune) are used where the brand
+ * identity trumps per-scheme overrides (e.g. cart count bubble).
+ */
+
+/* ======================================================================
+ * Announcement bar — terminal ticker on a graphite ribbon
+ * ==================================================================== */
+
+.shopify-section-group-header-group .announcement-bar {
+  background-color: var(--color-graphite);
+  color: var(--color-sand-dune);
+}
+
+.announcement-bar__message,
+.announcement-bar__announcement .announcement-bar__message {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-xs);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: var(--space-1) var(--space-2);
+}
+
+.announcement-bar__link {
+  color: var(--color-sand-dune);
+}
+
+.announcement-bar__link:hover {
+  color: var(--color-burnt-rose);
+}
+
+/* ======================================================================
+ * Header — wordmark, nav, icons
+ * ==================================================================== */
+
+.header-wrapper {
+  border-bottom-color: rgba(var(--color-foreground), 0.15);
+}
+
+.header {
+  column-gap: var(--space-3);
+}
+
+/* Logo wordmark — text fallback uses the logo typeface at display scale. */
+.header__heading-link span.h2 {
+  font-family: var(--font-logo-family);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.01em;
+}
+
+/* Nav links — monospace caps, analogue-gear labelling. */
+.header__inline-menu .list-menu__item--link,
+.header__inline-menu .list-menu__item--link-top-level,
+.header__inline-menu .header__menu-item {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.header__inline-menu .list-menu__item--link:hover,
+.header__inline-menu .header__menu-item:hover,
+.header__menu-item.list-menu__item--active {
+  color: var(--color-burnt-rose);
+}
+
+/* Icon cluster — cart, account, search. */
+.header__icon .svg-wrapper {
+  color: rgb(var(--color-foreground));
+}
+
+.header__icon:hover .svg-wrapper {
+  color: var(--color-burnt-rose);
+}
+
+/* Cart count bubble — burnt-rose pill, monospace numeral. */
+.cart-count-bubble {
+  background-color: var(--color-burnt-rose);
+  color: var(--color-sand-dune);
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.02em;
+}
