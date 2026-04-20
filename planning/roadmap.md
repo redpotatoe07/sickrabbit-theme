@@ -11,14 +11,11 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 | — | Dawn forked as base theme | 2026-04-19 |
 | — | Repo setup retrofit (CLAUDE.md, docs/, planning/, .greptile/, .claude/skills/) | 2026-04-19 |
 | Phase 1 | Setup complete — Shopify CLI, Greptile + MCP, AI Toolkit, project skills, GitHub ruleset on `main` | 2026-04-20 |
+| Phase 2 | Brand tokens extracted — palette mapped onto Dawn's 5 schemes, 6 font roles wired (4 via Shopify `font_picker`, 2 via Google Fonts; Nordica Plus deferred post-launch), full token block in `assets/base.css` | 2026-04-20 |
 
 ## In Progress
 
-### Phase 2 — Extract brand tokens (1 session)
-- [ ] **TSK-001**: Pull colours, fonts, type scale, spacing from `C:\Users\redpo\repos\sickrabbit-website\src\styles\variables.css`
-- [ ] **TSK-002**: Map onto Dawn's colour schemes in `config/settings_data.json`
-- [ ] **TSK-003**: Add CSS custom properties (including `--shadow-bevel-*`) to `assets/base.css`
-- [ ] **TSK-004**: Wire webfonts (UnifrakturMaguntia, Pirata One, Anonymous Pro, Nordica Plus, UnifrakturCook, Outfit) — `font_picker` settings or explicit `@font-face`
+_(Nothing actively in flight. Audit Checkpoint is the next step — see below.)_
 
 ## Next
 
