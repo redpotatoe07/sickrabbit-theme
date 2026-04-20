@@ -131,7 +131,7 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "assistant_n4",
+        "default": "anonymous_pro_n4",
         "label": "t:settings_schema.typography.settings.type_body_font.label"
       },
       {
@@ -143,6 +143,32 @@
         "unit": "%",
         "label": "t:settings_schema.typography.settings.body_scale.label",
         "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Sick Rabbit display fonts"
+      },
+      {
+        "type": "paragraph",
+        "content": "Used for H1, the logo, and the hero title. See docs/design/system.md. Pirata One (H2) and Cinzel (collection names) are not in Shopify's font library — they're loaded from Google Fonts and hardcoded in theme.liquid."
+      },
+      {
+        "type": "font_picker",
+        "id": "type_display_special_font",
+        "default": "unifraktur_maguntia_n4",
+        "label": "Display / H1 font"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_logo_font",
+        "default": "unifraktur_cook_n7",
+        "label": "Logo font"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_hero_title_font",
+        "default": "outfit_n4",
+        "label": "Hero title font"
       }
     ]
   },
