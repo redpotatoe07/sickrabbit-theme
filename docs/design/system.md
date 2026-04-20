@@ -153,7 +153,21 @@ Used sparingly, for interface elements that want an analogue / physical-device f
 
 ## Buttons
 
-TODO (Phase 3 — header/hero pass). Dawn ships a button system; decide whether to extend it (`.button`, `.button--primary`, `.button--secondary`) or replace. Log decision in `docs/decisions.md` when made.
+Defined in `assets/chrome-restyle.css`. Decision rationale in `docs/decisions.md` (2026-04-20).
+
+| Variant | Selector | Typography | Fill | Shadow |
+|---|---|---|---|---|
+| Primary | `.button` / `.button--primary` | `--font-display-special-family` (UnifrakturMaguntia), `--text-body-lg`, `0.06em` tracking | `--color-burnt-rose` on `--color-sand-dune` label | `--shadow-bevel-raised` → `-hover` → `-pressed` |
+| Secondary | `.button--secondary` | Inherits parent | Transparent, 1px `--color-foreground` border; hover fills burnt-rose | None (flat) |
+| Tertiary | `.button--tertiary` | Inherits parent | Transparent | None |
+
+- Primary CTAs (checkout, add-to-cart, hero CTA) use the bevel trio for an analogue-toggle feel; transition is `--transition-fast`.
+- `:active` translates the button 1px down to reinforce the press.
+- `[disabled]` drops opacity to 0.5 and removes the shadow.
+
+## Inputs
+
+TODO (Phase 3 — PDP / newsletter pass). Dawn's `.field` pattern is the starting point. Any deviation gets logged.
 
 ## Inputs
 

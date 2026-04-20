@@ -98,3 +98,198 @@
   font-weight: var(--weight-bold);
   letter-spacing: 0.02em;
 }
+
+/* ======================================================================
+ * Button system — primary/secondary scheme for CTAs
+ *
+ * Primary uses the display-special face (UnifrakturMaguntia) at
+ * display-body size, burnt-rose fill, with the analogue bevel so the
+ * button reads as a physical toggle. Log in docs/design/system.md and
+ * docs/decisions.md.
+ * ==================================================================== */
+
+.button,
+.button--primary {
+  font-family: var(--font-display-special-family);
+  font-size: var(--text-body-lg);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.06em;
+  text-transform: none;
+  background-color: var(--color-burnt-rose);
+  color: var(--color-sand-dune);
+  border: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-bevel-raised);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.button:hover:not([disabled]),
+.button--primary:hover:not([disabled]) {
+  box-shadow: var(--shadow-bevel-hover);
+}
+
+.button:active:not([disabled]),
+.button--primary:active:not([disabled]) {
+  box-shadow: var(--shadow-bevel-pressed);
+  transform: translateY(1px);
+}
+
+.button[disabled],
+.button--primary[disabled] {
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: rgb(var(--color-foreground));
+  border: 1px solid rgb(var(--color-foreground));
+  box-shadow: none;
+}
+
+.button--secondary:hover:not([disabled]) {
+  background-color: var(--color-burnt-rose);
+  color: var(--color-sand-dune);
+  border-color: var(--color-burnt-rose);
+}
+
+.button--tertiary {
+  background: transparent;
+  box-shadow: none;
+  color: rgb(var(--color-foreground));
+}
+
+/* ======================================================================
+ * Cart drawer — overlay panel, monospace numerals, gothic headings
+ * ==================================================================== */
+
+cart-drawer .drawer__inner {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  padding: var(--space-4) var(--space-3);
+  gap: var(--space-3);
+}
+
+.drawer__header {
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.12);
+}
+
+.drawer__heading {
+  font-family: var(--font-heading-family);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.drawer__close {
+  color: rgb(var(--color-foreground));
+}
+
+.drawer__close:hover {
+  color: var(--color-burnt-rose);
+}
+
+.cart__empty-text {
+  font-family: var(--font-heading-family);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cart-item__name,
+.cart-item__name.h4 {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.02em;
+  line-height: var(--leading-normal);
+}
+
+.cart-item__details .product-option,
+.cart-item__details .caption-with-letter-spacing,
+.cart-item__details dl,
+.cart-item .light {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-sm);
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.cart-item__price-wrapper .price,
+.cart-item__final-price,
+.cart-item__old-price {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-item__old-price {
+  font-weight: var(--weight-regular);
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+/* Quantity controls — monospace numerals, square bevelled buttons. */
+cart-drawer .quantity {
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  border-radius: var(--radius-sm);
+  background-color: rgba(var(--color-foreground), 0.02);
+}
+
+cart-drawer .quantity__input {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+cart-drawer .quantity__button {
+  color: rgb(var(--color-foreground));
+  transition: color var(--transition-fast);
+}
+
+cart-drawer .quantity__button:hover {
+  color: var(--color-burnt-rose);
+}
+
+/* Totals — gothic heading, monospace currency. */
+.cart-drawer__footer {
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(var(--color-foreground), 0.12);
+}
+
+.totals__total {
+  font-family: var(--font-heading-family);
+  font-size: var(--text-h4);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.totals__total-value {
+  font-family: var(--font-body-family);
+  font-size: var(--text-h5);
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.tax-note {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-xs);
+  color: rgba(var(--color-foreground), 0.6);
+  letter-spacing: 0.04em;
+}
+
+.cart__checkout-button.button {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-h4);
+  letter-spacing: 0.04em;
+}
