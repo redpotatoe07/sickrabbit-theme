@@ -12,15 +12,13 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 | — | Repo setup retrofit (CLAUDE.md, docs/, planning/, .greptile/, .claude/skills/) | 2026-04-19 |
 | Phase 1 | Setup complete — Shopify CLI, Greptile + MCP, AI Toolkit, project skills, GitHub ruleset on `main` | 2026-04-20 |
 | Phase 2 | Brand tokens extracted — palette mapped onto Dawn's 5 schemes, 6 font roles wired (4 via Shopify `font_picker`, 2 via Google Fonts; Nordica Plus deferred post-launch), full token block in `assets/base.css` | 2026-04-20 |
+| Audit | Post-Phase 2 audit — clean. Token layer ready for Phase 3 consumption, no blocking debt, 0 commits behind upstream Dawn. Notes in chat, no issues logged. | 2026-04-20 |
 
 ## In Progress
 
-_(Nothing actively in flight. Audit Checkpoint is the next step — see below.)_
+_(Nothing actively in flight. Phase 3 is next.)_
 
 ## Next
-
-### Audit Checkpoint (post-Phase 2)
-Token-coverage audit before Phase 3 restyle begins. Run the `audit` skill with the token-coverage + font-loading extras.
 
 ### Phase 3 — Restyle sections (iterative, ~4–6 sessions)
 - [ ] **TSK-005**: Restyle header (logo, nav, cart icon, announcement bar)
