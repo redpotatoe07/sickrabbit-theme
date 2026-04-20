@@ -250,12 +250,21 @@ The **Upstream / Dawn notes** section is specific to this project — it forces 
 
 #### Create the PR
 
+**Always pass `--repo redpotatoe07/sickrabbit-theme` explicitly.** This repo has `upstream` pointing at `Shopify/dawn`; `gh pr create` without an explicit repo flag defaults to the parent and opens PRs against Shopify's public Dawn repo by mistake. A one-time `gh repo set-default redpotatoe07/sickrabbit-theme` helps, but pass `--repo` anyway — belt-and-braces. Also pass `--base main` and `--head <branch-name>` explicitly so nothing else can drift.
+
 ```bash
-gh pr create --title "<title>" --body "$(cat <<'EOF'
+gh pr create \
+  --repo redpotatoe07/sickrabbit-theme \
+  --base main \
+  --head <branch-name> \
+  --title "<title>" \
+  --body "$(cat <<'EOF'
 <body>
 EOF
 )"
 ```
+
+After the command returns, verify the URL points at `github.com/redpotatoe07/sickrabbit-theme/pull/N`. If it points at `github.com/Shopify/dawn/...`, something went wrong — close immediately with `gh pr close <url> --comment "wrong repo, closing"` and retry.
 
 ### 8. Report
 
@@ -269,14 +278,18 @@ Scheduled Greptile review check every 8 minutes — pr-comments will pick up fee
 
 ### 9. Schedule the review check
 
-After creating the PR, schedule `/pr-comments` to run every 8 minutes so Greptile's review gets picked up without you having to remember. Use CronCreate:
+After creating the PR, schedule the `pr-comments` skill to run every 8 minutes so Greptile's review gets picked up without you having to remember.
+
+**Do not pass `"/pr-comments"` as the prompt** — the harness interprets that as a built-in CLI slash command and rejects it with `Unknown command: /pr-comments`. Slash commands only route to skills when typed interactively by a user; the cron prompt channel doesn't go through that parser. Use a natural-language prompt that names the skill by its slug so the skill auto-trigger picks it up.
 
 ```
 CronCreate:
   cron: "*/8 * * * *"
-  prompt: "/pr-comments"
+  prompt: "Check PR #<N> on the Sick Rabbit theme (<URL>) for new Greptile or human review comments. If there are new comments, invoke the pr-comments skill to triage and resolve them. If nothing new, report 'no new comments' in one line and exit."
   recurring: true
 ```
+
+Fill in the PR number and URL returned by `gh pr create`.
 
 Before creating, **check with CronList** — only one pr-comments cron at a time; don't stack duplicates if one is already running from an earlier PR.
 
