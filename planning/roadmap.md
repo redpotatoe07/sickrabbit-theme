@@ -16,17 +16,16 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 
 ## In Progress
 
-_(Nothing actively in flight. Phase 3 is next.)_
-
-## Next
-
 ### Phase 3 — Restyle sections (iterative, ~4–6 sessions)
-- [ ] **TSK-005**: Restyle header (logo, nav, cart icon, announcement bar)
+Section-by-section restyle consuming the Phase 2 token layer. Starting with the header — sets the type/colour/spacing precedent the rest of the phase inherits.
+- [ ] **TSK-005**: Restyle header (logo, nav, cart icon, announcement bar) ← starting here
 - [ ] **TSK-006**: Restyle homepage (hero, featured collections, content modules)
 - [ ] **TSK-007**: Restyle collection page (grid, filters, sort)
 - [ ] **TSK-008**: Restyle product page / PDP (gallery, variants, add-to-cart, description)
 - [ ] **TSK-009**: Restyle cart drawer (quantity, line items, checkout button)
 - [ ] **TSK-010**: Restyle footer (links, newsletter, socials)
+
+## Next
 
 ### Phase 4 — Content + products (parallel with Phase 3)
 - [ ] **TSK-011**: Tapstitch integration — app install or CSV sync
