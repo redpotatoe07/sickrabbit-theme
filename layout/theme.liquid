@@ -61,7 +61,13 @@
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {%- comment -%}
+        type_header_font picker is kept in the schema for Dawn compatibility,
+        but its font_face is NOT emitted: --font-heading-family is hardcoded
+        to Pirata One (loaded via Google Fonts link in <head>). Emitting the
+        picker font here would download Assistant (or whatever the picker is
+        set to) without ever applying it.
+      {%- endcomment -%}
       {{ settings.type_display_special_font | font_face: font_display: 'swap' }}
       {{ settings.type_logo_font | font_face: font_display: 'swap' }}
       {{ settings.type_hero_title_font | font_face: font_display: 'swap' }}
@@ -118,8 +124,8 @@
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
 
         --font-heading-family: 'Pirata One', serif;
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
+        --font-heading-style: normal;
+        --font-heading-weight: 400;
 
         --font-display-special-family: {{ settings.type_display_special_font.family }}, {{ settings.type_display_special_font.fallback_families }};
         --font-display-family: 'Cinzel', serif;
