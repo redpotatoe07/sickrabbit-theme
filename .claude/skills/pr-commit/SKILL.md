@@ -295,7 +295,7 @@ Before creating, **check with CronList** — only one pr-comments cron at a time
 
 Tell the user: *"Scheduled review check every 8 minutes. Review comments will be picked up and resolved automatically via the pr-comments skill."*
 
-The pr-comments skill handles the rest of the loop: fetch comments, resolve them, commit, push, re-check until clean, then offer to merge (which ships live).
+The pr-comments skill handles each cron fire: fetch any new comments since the last push, fix them if there are any, commit, push, exit. If there are no new comments it reports one line and exits. The loop runs until the user merges (via GitHub UI or `gh pr merge`) or cancels the cron.
 
 ## Edge cases
 
