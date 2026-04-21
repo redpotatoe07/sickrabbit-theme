@@ -16,6 +16,8 @@ Source tokens extracted from the old Astro repo at `C:\Users\redpo\repos\sickrab
 | `--color-burnt-rose` | `#903636` | Primary CTA, accent |
 | `--color-faded-copper` | `#a77b5f` | Reserved — special uses only |
 
+Each core token also has an rgb-triple variant (`--color-graphite-rgb`, `--color-sand-dune-rgb`, `--color-burnt-rose-rgb`, `--color-dark-slate-grey-rgb`, `--color-faded-copper-rgb`) for plugging brand colours into Dawn's scheme variables (`--color-button`, `--color-foreground`, etc.) which expect space-separated rgb values for `rgb()` / `rgba()` calls.
+
 ### Semantic
 
 | Token | Maps to |
@@ -160,7 +162,7 @@ Dawn paints `.button` fills via a `::after` pseudo-element (box-shadow layered o
 | Variant | Selector | Typography | Fill | Shadow on `::after` |
 |---|---|---|---|---|
 | Primary | `.button` / `.button--primary` | `--font-display-special-family` (UnifrakturMaguntia), `--text-body-lg`, `0.06em` tracking | Scheme `--color-button` (burnt rose in scheme-1) | `--shadow-bevel-raised` → `-hover` → `-pressed` |
-| Secondary | `.button--secondary` | Inherits parent | Scheme `--color-secondary-button` with visible border ring | Same bevel trio as primary |
+| Secondary | `.button--secondary` | Inherits parent | Transparent with burnt-rose border ring and text at rest; fills burnt-rose with sand-dune text on hover/active. Achieved by plugging `--color-burnt-rose-rgb` / `--color-sand-dune-rgb` into Dawn's `--color-button` / `--color-button-text` scoped to `.button--secondary` | Same bevel trio as primary |
 | Tertiary | `.button--tertiary` | Inherits parent | Transparent | None (text-link role) |
 
 - Every CTA gets the bevel — the physicality is part of the brand identity, not a primary-only accent. Secondary reads as "outlined-but-physical", not "flat".

@@ -170,6 +170,29 @@
   opacity: 0.5;
 }
 
+/* Secondary — outlined burnt-rose at rest, burnt-rose fill on hover.
+   Overrides Dawn's --color-secondary-button (which defaults to the
+   scheme text colour, producing a neutral-grey look) so secondary CTAs
+   still carry brand presence. Achieved by plugging brand rgb triples
+   into Dawn's own --color-button / --color-button-text scoped to
+   .button--secondary — so the ::after shadow stack keeps working. */
+.button--secondary {
+  --color-button: var(--color-burnt-rose-rgb);
+  --color-button-text: var(--color-burnt-rose-rgb);
+  --alpha-button-background: 0;
+  --border-opacity: 1;
+}
+
+.button--secondary:not([disabled]):hover {
+  --color-button-text: var(--color-sand-dune-rgb);
+  --alpha-button-background: 1;
+}
+
+.button--secondary:not([disabled]):active {
+  --color-button-text: var(--color-sand-dune-rgb);
+  --alpha-button-background: 1;
+}
+
 /* Tertiary stays flat — text-link role, no physical affordance. */
 .button--tertiary::after {
   box-shadow: none;
