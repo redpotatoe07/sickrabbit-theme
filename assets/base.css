@@ -13,6 +13,15 @@
   --color-burnt-rose: #903636;
   --color-faded-copper: #a77b5f;
 
+  /* Colour — rgb triples for plugging brand colours into Dawn's
+     scheme variables (--color-button, --color-foreground, etc.) which
+     expect space-separated rgb values for use in rgb() / rgba() calls. */
+  --color-graphite-rgb: 45 45 42;
+  --color-sand-dune-rgb: 229 220 197;
+  --color-dark-slate-grey-rgb: 28 77 79;
+  --color-burnt-rose-rgb: 144 54 54;
+  --color-faded-copper-rgb: 167 123 95;
+
   /* Colour — semantic */
   --color-cta-primary: var(--color-burnt-rose);
   --color-cta-secondary: var(--color-dark-slate-grey);

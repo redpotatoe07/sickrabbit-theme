@@ -96,6 +96,20 @@ Architectural and design decisions. What was decided, why, what was rejected.
 - Burnt rose as scheme-1 background — too aggressive for the default surface; reserved for featured moments instead.
 - Keeping Copper entirely out of the scheme system — would leave scheme-5 doing nothing useful.
 
+## 2026-04-20: Button system — bevelled primary on burnt rose, flat secondary/tertiary
+
+**Decision:** Define `.button` / `.button--primary` / `.button--secondary` / `.button--tertiary` in `assets/chrome-restyle.css` using the existing Phase 2 tokens. Primary uses `--font-display-special-family` (UnifrakturMaguntia), burnt-rose fill, sand-dune label, and the `--shadow-bevel-*` trio for raised/hover/pressed states — so a CTA reads as a physical analogue toggle rather than a flat web button. Secondary is an outlined monospace button; tertiary is text-only.
+
+**Why:** Phase 3 is the first time `.button` styling actually ships — Dawn's default is neutral and boxy. The Sick Rabbit brand leans on three legs (archaic typography + analogue gear physicality + playful irreverence), and the CTA is where all three converge. The bevel gives the physicality, UnifrakturMaguntia carries the archaic typography onto UI, and burnt rose is the brand-locked accent. Making the choice now, while the cart-drawer checkout button is being styled, avoids writing a one-off checkout button that later has to be reconciled with a general button system.
+
+**Implementation note:** Dawn paints `.button` fills via a `::after` pseudo-element (box-shadow stack, z-index 1) rather than a `background-color` on `.button` itself. The first pass overrode `.button { background-color: ... }` and saw no change at rest — Dawn's `::after` was covering it. The fix extends Dawn's `::after` box-shadow list with the `--shadow-bevel-*` tokens so Sick Rabbit's bevel rides on top of Dawn's scheme-bound fill/border. This also means every `.button` variant gets the bevel automatically (primary, secondary, anything else Dawn classes as `button`), which matches the "physicality on every control" direction — Dawn-demoted secondaries (e.g. PDP "Add to cart" when PayPal is enabled) still feel analogue instead of looking flat next to a primary checkout button.
+
+**Rejected:**
+- Extend Dawn's `.button` with a single colour override and leave the neutral shape — misses the physicality leg entirely; all three brand legs are load-bearing.
+- Build a standalone `.checkout-button` just for the drawer — cheaper now, but locks in duplication every time a CTA appears elsewhere (PDP add-to-cart, hero CTA, newsletter submit).
+- Put the button styles in a separate `buttons.css` file — fragments the Phase 3 override layer and adds another `stylesheet_tag`. `chrome-restyle.css` already covers the surfaces where buttons appear first (header cart, cart drawer, footer newsletter); later phases can split if the file balloons.
+- Bevel on primary only, secondary flat — tried first pass, produced visible inconsistency between primary CTAs (cart drawer checkout) and Dawn-demoted secondaries (PDP add-to-cart when dynamic checkout is on). The demotion is about hierarchy, not brand voice — all controls should feel analogue.
+
 ## 2026-04-19: Copy source is the old Astro repo
 
 **Decision:** Reuse homepage copy, about page, collection descriptions from `C:\Users\redpo\repos\sickrabbit-website` (`src/pages/`, `src/content/`). Only rewrite when the old copy doesn't fit the new context.
