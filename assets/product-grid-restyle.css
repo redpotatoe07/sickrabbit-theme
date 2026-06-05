@@ -1,0 +1,70 @@
+/*
+ * Product grid + card restyle — merch-table density.
+ *
+ * Loaded after Dawn's component-card.css / component-price.css in
+ * layout/theme.liquid so tokenised overrides win cascade without
+ * !important. Additive only — do not edit Dawn's component-*.css so
+ * `git merge upstream/main` stays tractable.
+ *
+ * Applies to every product grid (collection pages + homepage
+ * featured-collection sections) since both render snippets/card-product.liquid.
+ * Tokens: assets/base.css / docs/design/system.md.
+ *
+ * Cluster 2 of the apparel-type redesign — see
+ * docs/design/2026-06-05-apparel-type-redesign.md.
+ */
+
+/* ======================================================================
+ * Grid — tighter gutters for the wall-of-merch feel
+ * ==================================================================== */
+
+.product-grid {
+  --grid-desktop-horizontal-spacing: var(--space-2); /* 16px */
+  --grid-desktop-vertical-spacing: var(--space-5); /* 40px — room for title+price */
+  --grid-mobile-horizontal-spacing: var(--space-1); /* 8px */
+  --grid-mobile-vertical-spacing: var(--space-4); /* 32px */
+}
+
+/* ======================================================================
+ * Card text — small monospace listing type (UI = monospace per vision)
+ * ==================================================================== */
+
+.card__information,
+.card-information {
+  padding: var(--space-1) 0 0;
+}
+
+/* Title: drop the blackletter heading face here — listing text is UI.
+   Small, uppercase, tracked monospace reads cleanly at grid scale. */
+.card__heading,
+.card-information .card__heading {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-sm); /* 14px */
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: 0.04em;
+}
+
+.card__heading a {
+  text-transform: uppercase;
+}
+
+/* Price: same monospace, a touch dimmer than the title. */
+.card-information .price,
+.card-information .price__regular .price-item,
+.card-information .price__sale .price-item {
+  font-family: var(--font-body-family);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.02em;
+}
+
+/* ======================================================================
+ * Card media — uniform tiles, square-ish corners (merch-table, not soft UI)
+ * ==================================================================== */
+
+.product-grid .card__media,
+.product-grid .card .media {
+  border-radius: var(--radius-sm);
+}

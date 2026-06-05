@@ -449,3 +449,21 @@ cart-drawer .quantity__button:hover {
 .footer .policies {
   gap: var(--space-2);
 }
+
+/* ======================================================================
+ * Page width — fill wide screens
+ *
+ * Dawn caps content at --page-width (the page_width setting; admin slider
+ * maxes at 1600px). On a wide monitor that leaves big empty side margins
+ * and the storefront feels boxed-in. Scale the content container with the
+ * viewport instead, with responsive side gutters, capped so ultra-wide
+ * screens don't get absurd line lengths. Applies site-wide (header,
+ * product grids, footer) — addresses the redesign's full-width direction.
+ * ==================================================================== */
+
+@media screen and (min-width: 990px) {
+  .page-width,
+  .page-width-desktop {
+    max-width: min(2000px, 92vw);
+  }
+}
