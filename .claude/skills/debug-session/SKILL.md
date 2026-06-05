@@ -1,6 +1,6 @@
 ---
 name: debug-session
-description: Run a structured debugging session on the Sick Rabbit Shopify theme — triaging and working through multiple bugs in one sitting. Use this skill when the user wants to "debug", "fix things", "work through a list of issues", enter "debug mode", says "let's debug", or has multiple storefront problems to triage at once ("the PDP is broken AND the cart flickers AND the header nav disappears on mobile"). Also use when the user pastes in a batch of bug reports, returns from QA with a list, or shares Greptile findings they want to work through systematically. Not for single isolated fixes — those can go straight through the issue skill. This skill is the "sit down and work through everything that's wrong" workflow.
+description: Run a structured debugging session on the Sick Rabbit Shopify theme — triaging and working through multiple bugs in one sitting. Use this skill when the user wants to "debug", "fix things", "work through a list of issues", enter "debug mode", says "let's debug", or has multiple storefront problems to triage at once ("the PDP is broken AND the cart flickers AND the header nav disappears on mobile"). Also use when the user pastes in a batch of bug reports, returns from QA with a list, or shares Margins findings they want to work through systematically. Not for single isolated fixes — those can go straight through the issue skill. This skill is the "sit down and work through everything that's wrong" workflow.
 ---
 
 # Debug Session
@@ -19,7 +19,7 @@ git branch --show-current
 
 If it's `main`, stop. Tell the user:
 
-> You're on `main`, which auto-deploys to the live Shopify theme. Debug fixes need a branch so Greptile can review them before they ship:
+> You're on `main`, which auto-deploys to the live Shopify theme. Debug fixes need a branch so Margins can review them before they ship:
 >
 > ```
 > git checkout -b fix/debug-YYYY-MM-DD
@@ -68,7 +68,7 @@ Once everything real is logged, suggest an order:
 Then decide *where* fixes will land:
 
 - **Single quick fix, confident in it** — fix directly on `main`. Remember: `main` deploys live.
-- **Multi-fix session, or anything non-trivial** — cut a branch `fix/debug-YYYY-MM-DD` or similar. Let Greptile review before merging. For this project, branches-to-PR is the default for anything beyond a one-line fix.
+- **Multi-fix session, or anything non-trivial** — cut a branch `fix/debug-YYYY-MM-DD` or similar. Let Margins review before merging. For this project, branches-to-PR is the default for anything beyond a one-line fix.
 
 Confirm the order and branching with the user before investigating.
 
@@ -123,7 +123,7 @@ When the list is worked through:
 
 3. **Fill the `Commit:` field** on each fixed issue with the actual hash after the commit lands (`git log -1 --format=%h`).
 
-4. **If you branched** — push the branch, let Greptile review, and merge to `main` once green. Merging to `main` deploys live.
+4. **If you branched** — push the branch, let Margins review, and merge to `main` once green. Merging to `main` deploys live.
 
 5. **Update `docs/components.md`** if any snippet or section was added, renamed, or significantly changed during fixes.
 

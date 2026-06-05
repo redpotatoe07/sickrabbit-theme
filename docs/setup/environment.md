@@ -37,15 +37,17 @@ To switch accounts: `shopify auth logout` then re-run `shopify theme dev`.
 
 `.claude/settings.local.json` holds per-machine bash permissions for Claude Code (which commands it can run without prompting). It's gitignored — every clone starts fresh. If Claude Code prompts you for permission on commands you expect to allow (e.g. `where python`, `uv --version`, etc.), approve them once and they'll be saved locally. Shared team-wide conventions live in `.claude/settings.json` (which IS committed); local overrides live in the `.local.json` file which isn't.
 
-## Greptile MCP
+## Margins PR review
 
-The Greptile code review agent needs an API key to connect. See `.greptile/` setup and [the Greptile section of the Kiro vault](https://app.greptile.com/settings/api) for the key.
+PRs are reviewed automatically by [Margins](https://github.com/redpotatoe07/margins), a GitHub Action defined in `.github/workflows/margins-review.yml`. Per-repo review rules live in `.margins.md` at the repo root. There's no local setup — the Action runs in CI on every PR, so nothing needs configuring per machine.
 
-1. Get the API key from [app.greptile.com/settings/api](https://app.greptile.com/settings/api)
-2. Open `.greptile/mcp-proxy.mjs` and replace `"your-key-here"` with the real key
-3. Restart Claude Code — `/mcp` should show `greptile-api` as connected
+The only secret it needs is `ANTHROPIC_API_KEY`, stored in the repo's GitHub Actions secrets (never in the repo). To set it once:
 
-`.greptile/mcp-proxy.mjs` is gitignored so the key never ends up in Git. Each machine sets its own copy.
+```sh
+gh secret set ANTHROPIC_API_KEY -R redpotatoe07/sickrabbit-theme
+```
+
+Paste the key from [console.anthropic.com](https://console.anthropic.com) when prompted. Confirm with `gh secret list -R redpotatoe07/sickrabbit-theme` (shows names only, never values).
 
 ## GitHub integration (Phase 5)
 

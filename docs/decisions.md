@@ -15,7 +15,7 @@ Architectural and design decisions. What was decided, why, what was rejected.
 
 ## 2026-04-19: Retrofit the Dev Project Playbook structure onto Dawn (don't overwrite)
 
-**Decision:** Layer `CLAUDE.md`, `docs/`, `planning/`, `.greptile/`, `.claude/skills/` alongside Dawn's existing `assets/`, `sections/`, `snippets/`, `templates/` etc. Do not rename, delete, or restructure Dawn's files.
+**Decision:** Layer `CLAUDE.md`, `docs/`, `planning/`, `.claude/skills/` alongside Dawn's existing `assets/`, `sections/`, `snippets/`, `templates/` etc. Do not rename, delete, or restructure Dawn's files.
 
 **Why:** Dawn is tracked as `upstream`. Every rename or structural change we make becomes a merge conflict forever. Keep changes additive.
 
@@ -117,3 +117,13 @@ Architectural and design decisions. What was decided, why, what was rejected.
 **Why:** The voice is already right. Don't redo the voice work just because the stack changed.
 
 **Rejected:** Writing copy from scratch for the Shopify version.
+
+## 2026-06-05: Switch PR review from Greptile to Margins
+
+**Decision:** Discontinue Greptile and review PRs with [Margins](https://github.com/redpotatoe07/margins) instead. Removed the `.greptile/` directory and the `greptile-api` MCP server in `.mcp.json`; added `.margins.md` (per-repo review rules) at the repo root and `.github/workflows/margins-review.yml` (the review Action). The `pr-commit` / `pr-comments` skills and all docs were retargeted to Margins; their machinery (open-PR, schedule the 8-minute polling cron, fetch-fix-push loop, quiet-after-2-rounds ship signal) is reviewer-agnostic and unchanged.
+
+**Why:** Greptile ran as a local MCP proxy requiring a per-machine API key and a running Claude Code session to poll. Margins runs server-side as a GitHub Action on `pull_request` events — no local key, no MCP, reviews fire automatically on push, and review rules are versioned in-repo via `.margins.md`. Only secret is `ANTHROPIC_API_KEY` in GitHub Actions secrets.
+
+**Rejected:**
+- Keeping both — redundant cost and two review voices on every PR.
+- Deleting the `pr-comments` / `pr-commit` skills outright — their loop works for any reviewer that posts PR comments; only the Greptile-specific naming needed swapping.

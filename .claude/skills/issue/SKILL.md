@@ -60,7 +60,7 @@ Format: `ISS-NNN`. Increment from the highest existing ID. Read `planning/issues
 Severity in a live-selling theme is mostly about: *does this prevent a sale or make a customer see something wrong*.
 
 - **High** — blocks or breaks the purchase path. Checkout broken; cart broken; wrong price shown; currency/tax wrong; product variants not selecting; product pages 404ing; page crashing / white-screening; storefront password or unintended redirects; severe accessibility regression (can't add to cart by keyboard); Liquid error rendering a shopper-visible "Liquid error" string.
-- **Medium** — visible problem with a workaround or limited blast radius. Visual glitch in one section, layout breaking at a specific viewport, an animation that jitters, a translation key missing, a setting that isn't wiring through to the CSS, a broken link in the footer, a Greptile-flagged regression that hasn't bitten customers yet.
+- **Medium** — visible problem with a workaround or limited blast radius. Visual glitch in one section, layout breaking at a specific viewport, an animation that jitters, a translation key missing, a setting that isn't wiring through to the CSS, a broken link in the footer, a Margins-flagged regression that hasn't bitten customers yet.
 - **Low** — minor, edge case, or internal-only. Copy typo, slight spacing inconsistency, admin-only annoyance, console warning with no user-visible impact.
 
 When in doubt, ask the user — don't downgrade something that could be High.
@@ -105,9 +105,9 @@ fix: stop cart drawer closing on variant change (ISS-004)
 
 The `commit` skill's `fix` type pairs naturally with issues.
 
-## Connecting to Greptile and audits
+## Connecting to Margins and audits
 
-- **Greptile review comments** that surface real regressions can be logged as issues with a note like "Found by Greptile on PR #N" in the Steps field. Style-only Greptile nits (naming, token tidy-ups) usually don't warrant an issue — address them in the PR.
+- **Margins review comments** that surface real regressions can be logged as issues with a note like "Found by Margins on PR #N" in the Steps field. Style-only Margins nits (naming, token tidy-ups) usually don't warrant an issue — address them in the PR.
 - **Audit findings** (from the `audit` skill, when it exists) land here too, with "Found during audit — [check category]" in the Steps field. That traceability helps future audits dedupe.
 
 ## What not to log as an issue

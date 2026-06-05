@@ -1,11 +1,11 @@
 ---
 name: pr-comments
-description: Check the current PR for new Greptile (or human) review comments since the last push. If there are new ones, fix them, commit, push. If not, count consecutive empty fires — after 2, tell the user the PR looks ready to ship. Runs on the 8-minute cron scheduled by pr-commit, or invoke directly. Use when the user says "check the PR", "resolve comments", "what did the reviewer say", "fix the review", "address feedback", "are there new comments", or any variation. For opening a PR from scratch, use pr-commit.
+description: Check the current PR for new Margins (or human) review comments since the last push. If there are new ones, fix them, commit, push. If not, count consecutive empty fires — after 2, tell the user the PR looks ready to ship. Runs on the 8-minute cron scheduled by pr-commit, or invoke directly. Use when the user says "check the PR", "resolve comments", "what did the reviewer say", "fix the review", "address feedback", "are there new comments", or any variation. For opening a PR from scratch, use pr-commit.
 ---
 
 # PR Comments
 
-Check the current PR for new review comments since the last push. Fix them if any. Keep a small counter so that after 2 consecutive empty fires on the same commit, we tell the user Greptile has gone quiet and prompt for merge.
+Check the current PR for new review comments since the last push. Fix them if any. Keep a small counter so that after 2 consecutive empty fires on the same commit, we tell the user Margins has gone quiet and prompt for merge.
 
 Scheduled by `pr-commit` to run every 8 minutes. Runs until merge, cancel, or the quiet-threshold hits.
 
@@ -90,14 +90,14 @@ Increment `empty_count` in the state file.
 
 **If `empty_count < 2`**: write state, report `no new comments (N/2 empty)` in one line, exit. Cron fires again in 8 min.
 
-**If `empty_count == 2`**: Greptile has been quiet for two rounds on the same commit. This is the ship signal.
+**If `empty_count == 2`**: Margins has been quiet for two rounds on the same commit. This is the ship signal.
 
 1. Cancel the cron (`CronDelete` with the active job ID — get it via `CronList`).
 2. Delete `.claude/.pr-comments-state.json`.
 3. Tell the user:
 
 ```
-Greptile has been quiet for 2 consecutive checks on PR #<N>.
+Margins has been quiet for 2 consecutive checks on PR #<N>.
 Looks ready to ship.
 
 Reminder: merging deploys to the live Shopify theme immediately.

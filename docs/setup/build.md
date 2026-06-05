@@ -70,4 +70,4 @@ git push -u origin chore/upstream-merge-$(date +%Y-%m-%d)
 # Then open a PR to merge into main via pr-commit skill or gh pr create
 ```
 
-The PR is reviewed (Greptile) and merged like any other. Merging ships the updated Dawn baseline to the live theme — the same deploy path as feature work.
+The PR is reviewed (Margins) and merged like any other. Merging ships the updated Dawn baseline to the live theme — the same deploy path as feature work.
