@@ -55,7 +55,7 @@ A forked-and-restyled Shopify Dawn theme for the Sick Rabbit apparel brand. Depl
 - **Exception**: the Shopify GitHub bot commits merchant admin edits directly to `main`. That's expected — don't revert those casually.
 - **Branch types**: `fix/`, `feat/`, `restyle/`, `tokens/`, `refactor/`, `docs/`, `chore/`, `content/`. See the `commit` skill and `docs/setup/branching.md`.
 - **Keep commits focused.** One logical change per commit — so Shopify admin auto-commits don't collide with code changes and `git revert` stays useful.
-- **Use the skills.** `commit` for local commits; `pr-commit` to open a PR (auto-schedules review checks); `pr-comments` for the Greptile review loop. They enforce the above rules and the project conventions.
+- **Use the skills.** `commit` for local commits; `pr-commit` to open a PR (auto-schedules review checks); `pr-comments` for the Margins review loop. They enforce the above rules and the project conventions.
 
 ## Upstream Dawn merges
 - `upstream` remote → `https://github.com/Shopify/dawn.git`

@@ -1,11 +1,11 @@
 ---
 name: pr-commit
-description: Open a pull request for the Sick Rabbit theme — analyses the branch, updates planning docs, commits doc changes, pushes, and creates the PR with a title/body that matches the project's conventions. Also schedules an automatic Greptile review check. Use this skill whenever the user says "create a PR", "open a PR", "make a PR", "push and PR", "ready for review", "send this up", "ship this branch", "let's get this reviewed", "submit for review", "PR this", or has finished a block of work on a feature/fix/restyle branch and wants to get it reviewed. Also trigger on "we're done with this branch", "that's everything", or "let's push this up". Not for committing uncommitted work — that's the commit skill. Not for responding to review feedback on an existing PR — that's the pr-comments skill. This skill creates the PR; pr-comments closes the loop.
+description: Open a pull request for the Sick Rabbit theme — analyses the branch, updates planning docs, commits doc changes, pushes, and creates the PR with a title/body that matches the project's conventions. Also schedules an automatic Margins review check. Use this skill whenever the user says "create a PR", "open a PR", "make a PR", "push and PR", "ready for review", "send this up", "ship this branch", "let's get this reviewed", "submit for review", "PR this", or has finished a block of work on a feature/fix/restyle branch and wants to get it reviewed. Also trigger on "we're done with this branch", "that's everything", or "let's push this up". Not for committing uncommitted work — that's the commit skill. Not for responding to review feedback on an existing PR — that's the pr-comments skill. This skill creates the PR; pr-comments closes the loop.
 ---
 
 # PR Commit
 
-Opens a PR with the right title, body, and doc updates baked in, then hands off to Greptile's review loop. The goal: doc maintenance (roadmap, issues, components) happens as part of PR creation, not as a separate step that gets forgotten.
+Opens a PR with the right title, body, and doc updates baked in, then hands off to Margins' review loop. The goal: doc maintenance (roadmap, issues, components) happens as part of PR creation, not as a separate step that gets forgotten.
 
 Every PR merged to `main` auto-deploys to the live Shopify theme. The review gate is load-bearing — this skill treats PR creation as a checkpoint, not a formality.
 
@@ -273,19 +273,19 @@ Created PR #N: restyle: header nav to match brand type scale
 https://github.com/redpotatoe07/sickrabbit-theme/pull/N
 
 Doc updates: planning/roadmap.md, docs/components.md
-Scheduled Greptile review check every 8 minutes — pr-comments will pick up feedback automatically.
+Scheduled Margins review check every 8 minutes — pr-comments will pick up feedback automatically.
 ```
 
 ### 9. Schedule the review check
 
-After creating the PR, schedule the `pr-comments` skill to run every 8 minutes so Greptile's review gets picked up without you having to remember.
+After creating the PR, schedule the `pr-comments` skill to run every 8 minutes so Margins' review gets picked up without you having to remember.
 
 **Do not pass `"/pr-comments"` as the prompt** — the harness interprets that as a built-in CLI slash command and rejects it with `Unknown command: /pr-comments`. Slash commands only route to skills when typed interactively by a user; the cron prompt channel doesn't go through that parser. Use a natural-language prompt that names the skill by its slug so the skill auto-trigger picks it up.
 
 ```
 CronCreate:
   cron: "*/8 * * * *"
-  prompt: "Check PR #<N> on the Sick Rabbit theme (<URL>) for new Greptile or human review comments. If there are new comments, invoke the pr-comments skill to triage and resolve them. If nothing new, report 'no new comments' in one line and exit."
+  prompt: "Check PR #<N> on the Sick Rabbit theme (<URL>) for new Margins or human review comments. If there are new comments, invoke the pr-comments skill to triage and resolve them. If nothing new, report 'no new comments' in one line and exit."
   recurring: true
 ```
 

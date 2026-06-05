@@ -31,7 +31,7 @@ Mirrors Projects/Sick Rabbit/Documentation/Website/Development/Shopify Build Pla
 |---|---|---|
 | — | Dawn forked as base theme | 2026-04-19 |
 | — | Repo setup retrofit | 2026-04-19 |
-| Phase 1 | Setup complete (CLI, Greptile, AI Toolkit, skills) | 2026-04-20 |
+| Phase 1 | Setup complete (CLI, Margins, AI Toolkit, skills) | 2026-04-20 |
 
 ## In Progress
 

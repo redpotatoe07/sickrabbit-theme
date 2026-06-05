@@ -17,7 +17,7 @@ Custom Shopify theme for the [Sick Rabbit](https://sickrabbit.com) apparel brand
 | Local dev | [Shopify CLI](https://shopify.dev/docs/api/shopify-cli/theme) |
 | Version control | Git + GitHub |
 | Fulfillment | [Tapstitch](https://www.tapstitch.com/) (print-on-demand) |
-| Review | [Greptile](https://greptile.com) via MCP |
+| Review | [Margins](https://github.com/redpotatoe07/margins) — GitHub Action PR auto-reviewer |
 
 ## Getting started
 

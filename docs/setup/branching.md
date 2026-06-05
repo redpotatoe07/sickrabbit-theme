@@ -6,7 +6,7 @@ That reality drives every workflow rule below.
 
 ## The rule
 
-**All code work happens on a branch. Branches merge to `main` via a PR that has passed Greptile review. No exceptions for "small fixes".**
+**All code work happens on a branch. Branches merge to `main` via a PR that has passed Margins review. No exceptions for "small fixes".**
 
 A typo takes 30 seconds on a branch and merges in 2 minutes. A typo committed directly to `main` deploys to customers in 15 seconds. The asymmetry is the whole reason for the rule.
 
@@ -39,7 +39,7 @@ The strongest gate. Configured once in GitHub → Settings → Branches → Bran
 Required settings:
 
 - **Require a pull request before merging** — on
-  - **Require approvals** — at least 1 (Greptile's approval counts once configured, or yours on self-review)
+  - **Require approvals** — at least 1 (yours on self-review; Margins posts review comments but doesn't submit an approving review)
   - **Dismiss stale pull request approvals when new commits are pushed** — on (so approvals don't carry forward after unreviewed changes)
 - **Require status checks to pass before merging** — on (once CI exists — the GitHub Actions workflow from Dawn's upstream runs theme-check)
 - **Require linear history** — on (keeps `main` clean; pairs with squash-merge in the pr-comments skill)
@@ -61,7 +61,7 @@ If you can't figure out the exact bot identity in GitHub's UI, the simplest alte
 
 | Work type | Where it happens | How it reaches `main` |
 |---|---|---|
-| Feature, fix, restyle, refactor, docs | feature branch | PR → Greptile review → squash-merge |
+| Feature, fix, restyle, refactor, docs | feature branch | PR → Margins review → squash-merge |
 | Token changes | `tokens/*` branch | PR → review → merge |
 | Content / locale tweaks | `content/*` branch | PR → review → merge |
 | Dawn upstream merge | `chore/upstream-merge-YYYY-MM-DD` branch | PR → review → merge (expect conflicts in styled areas) |

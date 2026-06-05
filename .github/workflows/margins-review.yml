@@ -1,0 +1,25 @@
+name: Margins PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: margins-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: redpotatoe07/margins@v1
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: 'claude-sonnet-4-6'
+          allowed-authors: redpotatoe07
+          confidence-threshold: '0.7'
+          max-tokens-per-pr: '8000'
+          monthly-quota: '500'

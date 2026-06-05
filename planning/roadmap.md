@@ -9,10 +9,11 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 | Version | What | Date |
 |---|---|---|
 | — | Dawn forked as base theme | 2026-04-19 |
-| — | Repo setup retrofit (CLAUDE.md, docs/, planning/, .greptile/, .claude/skills/) | 2026-04-19 |
-| Phase 1 | Setup complete — Shopify CLI, Greptile + MCP, AI Toolkit, project skills, GitHub ruleset on `main` | 2026-04-20 |
+| — | Repo setup retrofit (CLAUDE.md, docs/, planning/, .claude/skills/) | 2026-04-19 |
+| Phase 1 | Setup complete — Shopify CLI, PR review tooling, AI Toolkit, project skills, GitHub ruleset on `main` | 2026-04-20 |
 | Phase 2 | Brand tokens extracted — palette mapped onto Dawn's 5 schemes, 6 font roles wired (4 via Shopify `font_picker`, 2 via Google Fonts; Nordica Plus deferred post-launch), full token block in `assets/base.css` | 2026-04-20 |
 | Audit | Post-Phase 2 audit — clean. Token layer ready for Phase 3 consumption, no blocking debt, 0 commits behind upstream Dawn. Notes in chat, no issues logged. | 2026-04-20 |
+| — | PR review switched from Greptile (MCP) to Margins (GitHub Action). `.greptile/` + MCP removed, `.margins.md` + workflow added, skills/docs retargeted. | 2026-06-05 |
 
 ## In Progress
 

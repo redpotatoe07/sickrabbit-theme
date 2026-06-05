@@ -15,7 +15,7 @@ sickrabbit-theme/
 ├── templates/          # OS 2.0 JSON templates + /customers account pages
 ├── docs/               # Repo documentation (this folder)
 ├── planning/           # Roadmap, ideas, issues
-├── .greptile/          # Greptile review config
+├── .github/            # CI + Margins PR-review workflow (.margins.md rules at root)
 └── .claude/skills/     # Project-specific Claude skills
 ```
 

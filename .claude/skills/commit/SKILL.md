@@ -36,7 +36,7 @@ Use the actual model running the session in the co-author line (check your own s
 | `refactor` | Structural changes without visual or behaviour change | `refactor: extract product-card media into snippet` |
 | `tokens` | Design token / theme settings changes | `tokens: wire burnt rose into primary button scheme` |
 | `docs` | Documentation only (`docs/`, `planning/`, `CLAUDE.md`) | `docs: log decision to defer bespoke PDP` |
-| `chore` | Tooling, config, deps, `.greptile/` changes | `chore: tighten theme-check rules for schema blocks` |
+| `chore` | Tooling, config, deps, CI / workflow changes | `chore: tighten theme-check rules for schema blocks` |
 | `content` | Locale / translation / copy-only changes | `content: update en.default cart empty-state copy` |
 
 `restyle` and `tokens` are Shopify-theme-specific additions to the usual Conventional Commits set — they make Phase 3 history grep-able.
@@ -97,7 +97,7 @@ Scan the diff for these common issues before staging.
 **Universal**
 
 - **Debug code left in** — `console.log`, `debugger`, commented-out blocks with no explanation.
-- **Staged secrets** — `.env`-style values, API keys, tokens, the real Greptile key in `.greptile/mcp-proxy.mjs`. Credential leaks are irreversible. (`.greptile/mcp-proxy.mjs` is gitignored — confirm it's still not staged.)
+- **Staged secrets** — `.env`-style values, API keys, tokens. Credential leaks are irreversible. (The `ANTHROPIC_API_KEY` for Margins lives in GitHub Actions secrets, never in the repo — confirm no key is staged.)
 - **Orphaned imports / unused JS** — leftovers from refactoring clutter the file.
 - **Files that shouldn't be tracked** — `.shopify/`, node_modules, personal editor files.
 
@@ -126,7 +126,7 @@ Any new errors block the commit until resolved. Warnings are judgement calls —
 
 ### 4. Stage and commit
 
-Stage specific files by name. Avoid `git add -A` or `git add .` — those sweep in unrelated changes, untracked editor files, or an accidental `.greptile/mcp-proxy.mjs` if the gitignore hasn't been respected.
+Stage specific files by name. Avoid `git add -A` or `git add .` — those sweep in unrelated changes, untracked editor files, or local state files (e.g. `.claude/.pr-comments-state.json`) if the gitignore hasn't been respected.
 
 ```bash
 git add <file1> <file2> ...

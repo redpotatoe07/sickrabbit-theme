@@ -13,7 +13,7 @@ if [ "$branch" = "main" ]; then
   echo "  ✗ Direct commits to main are blocked on this repo."
   echo ""
   echo "  main auto-deploys to the live Shopify theme. All work goes"
-  echo "  through a branch + PR + Greptile review."
+  echo "  through a branch + PR + Margins review."
   echo ""
   echo "  Create a branch:"
   echo "    git checkout -b <type>/<short-description>"
