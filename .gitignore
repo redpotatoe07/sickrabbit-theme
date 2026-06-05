@@ -19,3 +19,6 @@ __pycache__/
 # Claude Code runtime — cron/task lockfiles, session state
 .claude/scheduled_tasks.lock
 .claude/.pr-comments-state.json
+
+# Playwright MCP — local preview screenshots / snapshots (not theme artifacts)
+.playwright-mcp/

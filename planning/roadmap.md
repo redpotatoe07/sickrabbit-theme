@@ -17,30 +17,26 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 
 ## In Progress
 
-### Phase 3 — Restyle sections
-Restyle grouped into three PRs so shared patterns (nav type, product-card, overlay chrome) land together and don't need to be rewritten section-by-section.
+### Phase 3 — Restyle sections (redesign: apparel-type + merch-table)
 
-**PR 1 — Chrome** (`restyle/chrome`) ← starting here
-Persistent/overlay UI. Establishes the type ramp, link treatment, and icon set that everything else inherits.
-- [ ] **TSK-005**: Restyle header (logo, nav, cart icon, announcement bar)
-- [ ] **TSK-009**: Restyle cart drawer (quantity, line items, checkout button)
-- [ ] **TSK-010**: Restyle footer (links, newsletter, socials)
+**Direction pivoted 2026-06-05** — full spec in [`docs/design/2026-06-05-apparel-type-redesign.md`](../docs/design/2026-06-05-apparel-type-redesign.md). Store reorganised by **apparel type** (Tees, Hoodies, Sweatshirts, Caps) with a Killer-Acid-style dense, type-grouped layout. Themed collections retired. Fonts kept; colour pass deferred to the end.
 
-**PR 2 — Homepage** (`restyle/homepage`)
-Standalone marketing composition — hero + featured collections + content modules.
-- [ ] **TSK-006**: Restyle homepage
+**PR 1 — Chrome** (`restyle/chrome`) — ✅ shipped 2026-04-21 (#6): header, cart drawer, footer, button system.
 
-**PR 3 — Shopping flow** (`restyle/shopping`)
-Collection + PDP share the `product-card` snippet and variant/price patterns — done together so the card is written once.
-- [ ] **TSK-007**: Restyle collection page (grid, filters, sort)
-- [ ] **TSK-008**: Restyle product page / PDP (gallery, variants, add-to-cart, description)
+Remaining build clusters (detail in the spec):
+- [ ] **Cluster 1 — Catalogue scaffolding** (store data): 4 automatic type collections + placeholder products + nav menu pointed at the new structure
+- [ ] **Cluster 2 — Card + grid density**: restyle `card-product.liquid` + grid CSS (merch-table)
+- [ ] **Cluster 3 — Homepage**: rebuild `index.json` — hero + 4 type-section previews (preview + "view all")
+- [ ] **Cluster 4 — Type pages**: densify collection grid + banner
+- [ ] **Cluster 5 — Navigation**: SHOP dropdown → types, About, Contact
+- [ ] **Later — Colour pass**: retune palette toward the reference mood (deliberately last)
 
 ## Next
 
 ### Phase 4 — Content + products (parallel with Phase 3)
 - [ ] **TSK-011**: Tapstitch integration — app install or CSV sync
 - [ ] **TSK-012**: Product creation + tagging conventions
-- [ ] **TSK-013**: Rule-based collections (Anachronism, Norse Poets Society, Digital Occult, Major Arcana)
+- [ ] ~~**TSK-013**: Rule-based themed collections (Anachronism, Norse Poets Society, …)~~ — **superseded** by apparel-type collections (moved into Phase 3 redesign, 2026-06-05)
 - [ ] **TSK-014**: Paste/write homepage, about, policies (copy from old Astro repo)
 - [ ] **TSK-015**: Shipping zones, payment gateways, taxes (GBP)
 
