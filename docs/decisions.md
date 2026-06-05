@@ -134,7 +134,7 @@ Architectural and design decisions. What was decided, why, what was rejected.
 
 **Why:** `adapt` sizes each card to its own image's aspect ratio, so a grid of mixed-shape photos renders ragged (uneven tile heights, rows that don't line up). `portrait` forces every tile to a uniform tall rectangle — essential for the merch-table look where dozens of products sit in a tight grid. Apparel photography is portrait-leaning anyway.
 
-**Upstream-merge note:** `image_ratio` is a frequently-churned field — Dawn's "Update from Shopify" merges repeatedly reset it back to `adapt`. **After any `git merge upstream/main`, re-check `image_ratio` in `templates/collection.json` (and the homepage featured sections) and restore `portrait` if upstream flipped it.** Logged here so the choice isn't silently reverted. (Flagged by code review on PR #10.)
+**Upstream-merge note:** `image_ratio` is a frequently-churned field — Dawn's "Update from Shopify" merges repeatedly reset it back to `adapt`. **After any `git merge upstream/main`, re-check `image_ratio` in `templates/collection.json` (and the homepage featured sections) and restore `portrait` if upstream flipped it.** Logged here so the choice isn't silently reverted. (Surfaced during PR #10's review — below the comment-posting threshold, recorded here instead.)
 
 **Rejected:**
 - `adapt` — ragged grid, defeats the merch-table density.
