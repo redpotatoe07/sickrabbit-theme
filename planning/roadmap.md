@@ -24,9 +24,9 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 **PR 1 — Chrome** (`restyle/chrome`) — ✅ shipped 2026-04-21 (#6): header, cart drawer, footer, button system.
 
 Remaining build clusters (detail in the spec):
-- [ ] **Cluster 1 — Catalogue scaffolding** (store data): 4 automatic type collections + placeholder products + nav menu pointed at the new structure
-- [ ] **Cluster 2 — Card + grid density**: restyle `card-product.liquid` + grid CSS (merch-table)
-- [ ] **Cluster 3 — Homepage**: rebuild `index.json` — hero + 4 type-section previews (preview + "view all")
+- [x] **Cluster 1 — Catalogue scaffolding** ✅ — 4 automatic type collections (Tees/Hoodies/Sweatshirts/Caps) + 24 placeholder products, all published via Admin API
+- [x] **Cluster 2 — Card + grid density** ✅ shipped (#10) — merch-table grid (5-col, monospace labels) + full-width layout
+- [ ] **Cluster 3 — Homepage** (in review): hero + New Arrivals row + 4 type-section previews ("view all" each). Also: New Arrivals collection (newest-first) + Product type catalog filter enabled in Search & Discovery
 - [ ] **Cluster 4 — Type pages**: densify collection grid + banner
 - [ ] **Cluster 5 — Navigation**: SHOP dropdown → types, About, Contact
 - [ ] **Later — Colour pass**: retune palette toward the reference mood (deliberately last)

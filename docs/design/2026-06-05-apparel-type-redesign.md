@@ -14,7 +14,7 @@ A structural + visual redesign of the storefront. Two things move together:
 ## Decisions
 
 - **Collections become apparel-type, automatic.** Four automatic (rule-based) collections — Tees, Hoodies, Sweatshirts, Caps — populated by product **type**. No hand-curating. The themed collections are removed from navigation. ("Scrap collections" = scrap the *themed* ones; the collection mechanism stays — it's how Shopify powers a type grid.)
-- **Homepage = hybrid long-scroll.** Bold hero, then the four type sections stacked, each a **preview** (up to ~8 products) under a big blackletter header with a **"View all <type> →"** link to that type's full page. Built from four native Dawn `featured-collection` sections (one per type, `show_view_all` on) + an `image-banner` hero. Footer.
+- **Homepage = hybrid long-scroll.** Bold hero, then a **New Arrivals** row, then the four type sections stacked, each a **preview** (one 5-across row — `products_to_show: 5` to match the Cluster 2 grid) under a big blackletter header with a **"View all <type> →"** link to that type's full page. Built from native Dawn `featured-collection` sections (New Arrivals + one per type, `show_view_all` on) + an `image-banner` hero. Footer. *(New Arrivals added during Cluster 3 — a newest-first automatic collection so the freshest stock leads the page.)*
 - **Type pages are the real shop layer.** `/collections/tees` etc. exist as full collection-grid pages with Dawn's filtering / sorting / pagination — the "browse + search within a type" surface.
 - **Navigation stripped down.** `SHOP` (dropdown → the four types), `About`, `Contact`, plus search / account / cart icons. No themed-collection menu items.
 - **Product cards densified.** More columns, tighter gaps, minimal card (image, title, price). Same card on homepage previews and type pages. Restyle `snippets/card-product.liquid` + grid CSS; do **not** fork the snippet.
@@ -30,7 +30,7 @@ Mirrors the Phase 3 approach — shared patterns land once, in order.
 
 - **Cluster 1 — Catalogue scaffolding (store data):** create the four automatic collections (by product type); create placeholder products spread across the four types; point the nav menu at the new structure. Enables everything downstream to render.
 - **Cluster 2 — Product card + grid density:** restyle `card-product.liquid` and the grid to the merch-table density. Visible on both homepage previews and type pages.
-- **Cluster 3 — Homepage:** rebuild `templates/index.json` — hero (`image-banner`) + four `featured-collection` type sections (preview + view-all) + footer. Hero styling.
+- **Cluster 3 — Homepage:** rebuild `templates/index.json` — hero (`image-banner`) + **New Arrivals** row + four `featured-collection` type sections (preview + view-all) + footer. Also enable the Product type catalog filter (Search & Discovery).
 - **Cluster 4 — Type pages:** densify `main-collection-product-grid` / `main-collection-banner` to match.
 - **Cluster 5 — Navigation:** `SHOP` dropdown → four types, `About`, `Contact`; remove themed-collection links.
 - **Later — Colour pass:** retune the palette toward the reference's mood (separate, deliberately deferred).

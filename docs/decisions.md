@@ -127,3 +127,15 @@ Architectural and design decisions. What was decided, why, what was rejected.
 **Rejected:**
 - Keeping both — redundant cost and two review voices on every PR.
 - Deleting the `pr-comments` / `pr-commit` skills outright — their loop works for any reviewer that posts PR comments; only the Greptile-specific naming needed swapping.
+
+## 2026-06-05: Product card image ratio — portrait, not Dawn's "adapt"
+
+**Decision:** Set `image_ratio` to `portrait` on the collection grid (`templates/collection.json`) and the homepage `featured-collection` sections, overriding Dawn's default of `adapt`.
+
+**Why:** `adapt` sizes each card to its own image's aspect ratio, so a grid of mixed-shape photos renders ragged (uneven tile heights, rows that don't line up). `portrait` forces every tile to a uniform tall rectangle — essential for the merch-table look where dozens of products sit in a tight grid. Apparel photography is portrait-leaning anyway.
+
+**Upstream-merge note:** `image_ratio` is a frequently-churned field — Dawn's "Update from Shopify" merges repeatedly reset it back to `adapt`. **After any `git merge upstream/main`, re-check `image_ratio` in `templates/collection.json` (and the homepage featured sections) and restore `portrait` if upstream flipped it.** Logged here so the choice isn't silently reverted. (Surfaced during PR #10's review — below the comment-posting threshold, recorded here instead.)
+
+**Rejected:**
+- `adapt` — ragged grid, defeats the merch-table density.
+- `square` — viable, but crops apparel awkwardly; portrait suits tees/hoodies better.
