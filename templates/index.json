@@ -129,7 +129,7 @@
     "featured_caps": {
       "type": "featured-collection",
       "settings": {
-        "title": "Caps",
+        "title": "Hats",
         "heading_size": "h1",
         "collection": "caps",
         "products_to_show": 5,
