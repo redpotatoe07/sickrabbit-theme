@@ -19,12 +19,12 @@ Item-level tasks use `TSK-NNN` IDs so commits can reference them (`restyle: head
 
 ### Phase 3 — Restyle sections (redesign: apparel-type + merch-table)
 
-**Direction pivoted 2026-06-05** — full spec in [`docs/design/2026-06-05-apparel-type-redesign.md`](../docs/design/2026-06-05-apparel-type-redesign.md). Store reorganised by **apparel type** (Tees, Hoodies, Sweatshirts, Caps) with a Killer-Acid-style dense, type-grouped layout. Themed collections retired. Fonts kept; colour pass deferred to the end.
+**Direction pivoted 2026-06-05** — full spec in [`docs/design/2026-06-05-apparel-type-redesign.md`](../docs/design/2026-06-05-apparel-type-redesign.md). Store reorganised by **apparel type** (Tees, Hoodies, Sweatshirts, Hats) with a Killer-Acid-style dense, type-grouped layout. Themed collections retired. Fonts kept; colour pass deferred to the end.
 
 **PR 1 — Chrome** (`restyle/chrome`) — ✅ shipped 2026-04-21 (#6): header, cart drawer, footer, button system.
 
 Remaining build clusters (detail in the spec):
-- [x] **Cluster 1 — Catalogue scaffolding** ✅ — 4 automatic type collections (Tees/Hoodies/Sweatshirts/Caps) + 24 placeholder products, all published via Admin API
+- [x] **Cluster 1 — Catalogue scaffolding** ✅ — 4 automatic type collections (Tees/Hoodies/Sweatshirts/Hats) + 24 placeholder products, all published via Admin API
 - [x] **Cluster 2 — Card + grid density** ✅ shipped (#10) — merch-table grid (5-col, monospace labels) + full-width layout
 - [ ] **Cluster 3 — Homepage** (in review): hero + New Arrivals row + 4 type-section previews ("view all" each). Also: New Arrivals collection (newest-first) + Product type catalog filter enabled in Search & Discovery
 - [ ] **Cluster 4 — Type pages**: densify collection grid + banner
